@@ -1,0 +1,16 @@
+<div class="user-weight-history-add-container">
+  <h3>Add Weight History</h3>
+  <form (ngSubmit)="submitWeightHistory()">
+    <label for="weightKg">Weight (kg)</label>
+    <input id="weightKg" type="number" [(ngModel)]="weightKg" name="weightKg" required>
+
+    <label for="measuredAt">Measured At</label>
+    <input id="measuredAt" type="datetime-local" [(ngModel)]="measuredAt" name="measuredAt" required>
+
+    <label for="notes">Notes</label>
+    <input id="notes" type="text" [(ngModel)]="notes" name="notes">
+
+    <button type="submit">Submit</button>
+  </form>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

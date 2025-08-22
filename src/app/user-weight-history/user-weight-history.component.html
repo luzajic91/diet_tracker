@@ -1,0 +1,10 @@
+<div class="weight-history-container">
+  <h2>User Weight History</h2>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <ul *ngIf="weightHistory.length">
+    <li *ngFor="let entry of weightHistory">
+      Date: {{ entry.date }} - Weight: {{ entry.weight }} kg
+    </li>
+  </ul>
+  <div *ngIf="!weightHistory.length && !error">No weight history found.</div>
+</div>

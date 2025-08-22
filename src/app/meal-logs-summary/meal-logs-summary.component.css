@@ -1,0 +1,65 @@
+/* Date selectors styling */
+.date-selectors {
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-bottom: 1rem;
+}
+.date-selectors label {
+	font-weight: 500;
+	color: #1976d2;
+}
+.date-selectors input[type="date"] {
+	margin-left: 0.5rem;
+	padding: 0.25rem 0.5rem;
+	border: 1px solid #b0bec5;
+	border-radius: 4px;
+	font-size: 1rem;
+}
+/* Container styling to match modal content */
+.meal-logs-summary-container {
+	padding: 1rem 0;
+	text-align: center;
+}
+
+/* Table styling for summary */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1rem 0;
+	background: #f9f9f9;
+	border-radius: 8px;
+	overflow: hidden;
+	font-size: 1rem;
+}
+th, td {
+	padding: 0.75rem 1rem;
+	text-align: center;
+}
+th {
+	background: #1976d2;
+	color: #fff;
+	font-weight: 600;
+}
+tr:nth-child(even) {
+	background: #e3eafc;
+}
+tr:nth-child(odd) {
+	background: #fff;
+}
+td {
+	color: #222;
+}
+
+.error {
+	color: #e53935;
+	margin-bottom: 1rem;
+	font-weight: 500;
+}
+
+@media (max-width: 600px) {
+	table, th, td {
+		font-size: 0.9rem;
+		padding: 0.5rem;
+	}
+}

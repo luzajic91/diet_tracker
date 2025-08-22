@@ -1,0 +1,29 @@
+<div class="meal-logs-container">
+  <ng-container *ngIf="mode === 'add'">
+    <h3>Create Meal Log</h3>
+    <form>
+      <!-- User ID is set automatically -->
+      <label for="foodId">Food Item</label>
+      <select id="foodId" [(ngModel)]="newMealLog.foodId" name="foodId" required (ngModelChange)="onFormChange()">
+        <option value="" disabled selected>Select Food Item</option>
+        <option *ngFor="let item of foodItems" [value]="item.foodId">{{ item.foodItemsName }}</option>
+      </select>
+  <!-- Recipe ID removed -->
+      <input type="number" [(ngModel)]="newMealLog.quantityG" name="quantityG" placeholder="Quantity (g)" required (ngModelChange)="onFormChange()">
+      <input type="datetime-local" [(ngModel)]="newMealLog.consimedAt" name="consimedAt" placeholder="Consumed At" required (ngModelChange)="onFormChange()">
+    </form>
+  </ng-container>
+  <ng-container *ngIf="mode === 'edit'">
+    <h3>Update Meal Log</h3>
+    <form (ngSubmit)="updateMealLogById()">
+      <input type="number" [(ngModel)]="updateMealLog.logId" name="logId" placeholder="Log ID" required>
+      <input type="number" [(ngModel)]="updateMealLog.userId" name="userIdUpdate" placeholder="User ID">
+      <input type="number" [(ngModel)]="updateMealLog.foodId" name="foodIdUpdate" placeholder="Food ID">
+  <!-- Recipe ID removed -->
+      <input type="number" [(ngModel)]="updateMealLog.quantityG" name="quantityGUpdate" placeholder="Quantity (g)">
+      <input type="datetime-local" [(ngModel)]="updateMealLog.consimedAt" name="consimedAtUpdate" placeholder="Consumed At">
+      <button type="submit">Update</button>
+    </form>
+  </ng-container>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

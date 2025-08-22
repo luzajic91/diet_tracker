@@ -1,0 +1,28 @@
+<div class="food-items-add-container">
+  <h3>Add Food Item</h3>
+  <form (ngSubmit)="addFoodItem()">
+    <label for="foodItemsName">Food Name</label>
+    <input id="foodItemsName" type="text" [(ngModel)]="foodItem.foodItemsName" name="foodItemsName" placeholder="Food Name" required>
+
+    <label for="calories">Calories</label>
+    <input id="calories" type="number" [(ngModel)]="foodItem.calories" name="calories" placeholder="Calories" required>
+
+    <label for="carbsG">Carbs (g)</label>
+    <input id="carbsG" type="number" [(ngModel)]="foodItem.carbsG" name="carbsG" placeholder="Carbs (g)" required>
+
+    <label for="fatG">Fat (g)</label>
+    <input id="fatG" type="number" [(ngModel)]="foodItem.fatG" name="fatG" placeholder="Fat (g)" required>
+
+    <label for="proteinG">Protein (g)</label>
+    <input id="proteinG" type="number" [(ngModel)]="foodItem.proteinG" name="proteinG" placeholder="Protein (g)" required>
+
+    <label for="servingSize">Serving Size</label>
+    <input id="servingSize" type="number" [(ngModel)]="foodItem.servingSize" name="servingSize" placeholder="Serving Size" required>
+
+    <label for="servingName">Serving Name</label>
+    <input id="servingName" type="text" [(ngModel)]="foodItem.servingName" name="servingName" placeholder="Serving Name" required>
+
+    <button type="submit">Add</button>
+  </form>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

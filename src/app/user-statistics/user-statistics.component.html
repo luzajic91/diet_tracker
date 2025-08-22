@@ -1,0 +1,24 @@
+<div class="user-statistics-container">
+  <h3>Enter User Statistics</h3>
+  <form (ngSubmit)="submitStatistics()">
+    <label for="email">Email</label>
+    <input id="email" type="email" [(ngModel)]="email" name="email" required>
+
+    <label for="firstName">First Name</label>
+    <input id="firstName" type="text" [(ngModel)]="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name</label>
+    <input id="lastName" type="text" [(ngModel)]="lastName" name="lastName" required>
+
+  <input id="createdAt" type="hidden" [(ngModel)]="createdAt" name="createdAt">
+
+    <label for="birthDate">Birth Date</label>
+    <input id="birthDate" type="date" [(ngModel)]="birthDate" name="birthDate" required>
+
+    <label for="heightsCm">Height (cm)</label>
+    <input id="heightsCm" type="number" [(ngModel)]="heightsCm" name="heightsCm" required>
+
+    <button type="submit">Submit</button>
+  </form>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

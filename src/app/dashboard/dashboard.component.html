@@ -1,0 +1,87 @@
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <button (click)="showModal('food')">Food Items</button>
+    <button (click)="showModal('addFoodItem')">Add Food Item</button>
+    <button (click)="showModal('weight')">Weight History</button>
+    <button (click)="showModal('addWeightHistory')">Add Weight History</button>
+    <button (click)="showModal('weightHistoryChart')">Weight History Chart</button>
+    <button (click)="showModal('addMealLog')">Add Meal Log</button>
+    <button (click)="showModal('editMealLog')">Edit Meal Log</button>
+  <button (click)="showModal('mealLogsList')">Meal Logs List</button>
+  <button (click)="showModal('mealLogsSummary')">Meal Logs Summary</button>
+  <button (click)="showModal('userStatistics')">User Statistics</button>
+    <div class="modal" *ngIf="activeModal === 'mealLogsSummary'">
+      <div class="modal-content">
+        <button class="close" (click)="closeModal()">&times;</button>
+        <app-meal-logs-summary></app-meal-logs-summary>
+      </div>
+    </div>
+    <div class="modal" *ngIf="activeModal === 'userStatistics'">
+      <div class="modal-content">
+        <button class="close" (click)="closeModal()">&times;</button>
+        <app-user-statistics (statisticsSubmitted)="closeModal()"></app-user-statistics>
+      </div>
+    </div>
+    <div class="modal" *ngIf="activeModal === 'addWeightHistory'">
+      <div class="modal-content">
+        <button class="close" (click)="closeModal()">&times;</button>
+        <app-user-weight-history-add (weightHistoryAdded)="closeModal()"></app-user-weight-history-add>
+      </div>
+    </div>
+    <div class="modal" *ngIf="activeModal === 'weightHistoryChart'">
+      <div class="modal-content">
+        <button class="close" (click)="closeModal()">&times;</button>
+        <app-user-weight-history-chart></app-user-weight-history-chart>
+      </div>
+    </div>
+    <div class="modal" *ngIf="activeModal === 'mealLogsList'">
+      <div class="modal-content">
+        <button class="close" (click)="closeModal()">&times;</button>
+        <app-meal-logs-list></app-meal-logs-list>
+      </div>
+    </div>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </aside>
+  <main class="dashboard-main">
+    <h2>Welcome to your Dashboard!</h2>
+    <p>This is your homepage after logging in.</p>
+    <app-meal-logs-get></app-meal-logs-get>
+  </main>
+
+  <!-- Modals -->
+  <div class="modal" *ngIf="activeModal === 'food'">
+    <div class="modal-content">
+      <button class="close" (click)="closeModal()">&times;</button>
+      <app-food-items></app-food-items>
+    </div>
+  </div>
+  <div class="modal" *ngIf="showWeightHistoryModal">
+    <div class="modal-content">
+      <span class="close" (click)="showWeightHistoryModal = false">&times;</span>
+      <app-user-weight-history></app-user-weight-history>
+    </div>
+  </div>
+  <div class="modal" *ngIf="activeModal === 'addMealLog'">
+    <div class="modal-content">
+      <button class="close" (click)="closeModal()">&times;</button>
+      <ng-container *ngFor="let modal of addMealLogModals; let i = index">
+        <app-meal-logs-post-put [mode]="'add'" (mealLogChange)="onMealLogChange($event, i)"></app-meal-logs-post-put>
+        <button *ngIf="i === addMealLogModals.length - 1" (click)="addAnotherMealLogModal()" class="add-meal-log-btn">Add Another Meal Log</button>
+        <button *ngIf="addMealLogModals.length > 1" (click)="removeMealLogModal(i)" class="remove-meal-log-btn">Remove</button>
+      </ng-container>
+      <button (click)="createAllMealLogs()" class="add-meal-log-btn" style="margin-top: 1rem;">Create</button>
+    </div>
+  </div>
+  <div class="modal" *ngIf="activeModal === 'editMealLog'">
+    <div class="modal-content">
+      <button class="close" (click)="closeModal()">&times;</button>
+      <app-meal-logs-post-put [mode]="'edit'"></app-meal-logs-post-put>
+    </div>
+  </div>
+  <div class="modal" *ngIf="activeModal === 'addFoodItem'">
+    <div class="modal-content">
+      <button class="close" (click)="closeModal()">&times;</button>
+      <app-food-items-add (foodAdded)="closeModal()"></app-food-items-add>
+    </div>
+  </div>
+</div>

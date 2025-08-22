@@ -1,0 +1,15 @@
+<div class="meal-logs-list-container">
+  <h3>Meal Logs List</h3>
+  <input type="text" [(ngModel)]="sortText" (ngModelChange)="onSortTextChange()" placeholder="Sort by user or food name...">
+  <ul *ngIf="filteredMealLogs.length">
+    <li *ngFor="let log of filteredMealLogs">
+      <strong>User:</strong> {{ getUserName(log.userId) }}<br>
+      <strong>Food:</strong> {{ getFoodName(log.foodId) }}<br>
+      <strong>Servings:</strong> {{ getServings(log) }}<br>
+      <strong>Grams:</strong> {{ log.quantityG }}<br>
+      <strong>Consumed At:</strong> {{ log.consimedAt }}
+    </li>
+  </ul>
+  <div *ngIf="!filteredMealLogs.length">No meal logs found.</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+</div>

@@ -1,0 +1,6 @@
+<div class="user-weight-history-chart-container">
+  <h3>Your Weight History</h3>
+  <div *ngIf="message" class="message">{{ message }}</div>
+  <canvas *ngIf="chartData.length" id="weightChart"></canvas>
+  <div *ngIf="!chartData.length && !message">No weight history data found.</div>
+</div>
