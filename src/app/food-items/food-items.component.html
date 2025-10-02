@@ -2,22 +2,11 @@
   <h2>Food Items</h2>
   <button (click)="getAllFoodItems()">Get All Food Items</button>
   <div *ngIf="error" class="error">{{ error }}</div>
-  <ul *ngIf="foodItems.length">
-    <li *ngFor="let item of foodItems">
+  <input type="text" [(ngModel)]="searchName" placeholder="Search food by name">
+  <ul *ngIf="filteredFoodItems.length">
+    <li *ngFor="let item of filteredFoodItems">
       {{ item.foodItemsName }} ({{ item.calories }} kcal)
     </li>
   </ul>
-  <div *ngIf="!foodItems.length && !error">No food items found.</div>
-
-  <h3>Get Single Food Item</h3>
-  <input type="number" [(ngModel)]="foodIdToFetch" placeholder="Food Item ID">
-  <button (click)="getFoodItemById()">Get Food Item</button>
-  <div *ngIf="selectedFoodItem">
-    <h4>{{ selectedFoodItem.foodItemsName }}</h4>
-    <p>Calories: {{ selectedFoodItem.calories }}</p>
-    <p>Carbs: {{ selectedFoodItem.carbsG }}g</p>
-    <p>Fat: {{ selectedFoodItem.fatG }}g</p>
-    <p>Protein: {{ selectedFoodItem.proteinG }}g</p>
-    <p>Custom: {{ selectedFoodItem.isCustom ? 'Yes' : 'No' }}</p>
-  </div>
+  <div *ngIf="!filteredFoodItems.length && !error">No food items found.</div>
 </div>

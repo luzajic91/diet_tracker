@@ -21,6 +21,13 @@ export class FoodItemsComponent {
   selectedFoodItem: FoodItem | null = null;
   foodIdToFetch: number | null = null;
   error: string = '';
+  searchName: string = '';
+  get filteredFoodItems(): FoodItem[] {
+    if (!this.searchName.trim()) return this.foodItems;
+    return this.foodItems.filter(item =>
+      item.foodItemsName.toLowerCase().includes(this.searchName.trim().toLowerCase())
+    );
+  }
 
   constructor(private http: HttpClient) {}
 
