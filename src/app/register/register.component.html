@@ -7,7 +7,8 @@
     <input type="text" placeholder="Last Name" name="lastName" [(ngModel)]="lastName" required>
   <input type="date" placeholder="Birth Date" name="birthDate" [(ngModel)]="birthDate" required>
   <input type="number" placeholder="Height (cm)" name="heightsCm" [(ngModel)]="heightsCm" required>
-  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  <button type="submit" >Register</button>
+  <!-- <button type="submit" [disabled]="registerForm.invalid">Register</button> -->
   </form>
   <a routerLink="/">Already have an account? Login</a>
 </div>

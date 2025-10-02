@@ -38,6 +38,7 @@ export class MealLogsGetComponent {
     const token = localStorage.getItem('token');
     return new HttpHeaders({ 'Authorization': `Bearer ${token}` });
   }
+  
 
   getAllMealLogs() {
     const userId = localStorage.getItem('userId');
@@ -99,7 +100,7 @@ export class MealLogsGetComponent {
         };
       },
       error: () => {
-        this.userDetailsMap[userId] = { userId, firstname: 'Unknown', lastname: '' };
+        this.userDetailsMap[userId] = { userId, firstname: 'Unknown', lastname: 'Also unknown' };
       }
     });
   }

@@ -18,6 +18,7 @@ export class RegisterComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   register() {
+    console.log('Register button clicked');
     const payload = {
       email: this.email,
       password: this.password,
@@ -26,13 +27,25 @@ export class RegisterComponent {
       birthDate: this.birthDate,
       heightsCm: this.heightsCm
     };
+    console.log('Registering user with payload:', payload);
     this.http.post<any>('http://localhost:5122/api/Auth/register', payload).subscribe({
       next: () => {
         alert('Registration successful! Please login.');
         this.router.navigate(['/']);
       },
       error: (err) => {
-        alert('Registration failed. Please try again.');
+        let errorMsg = 'Registration failed. Please try again.';
+        if (err.error) {
+          if (typeof err.error === 'string') {
+            errorMsg += '\nDetails: ' + err.error;
+          } else if (err.error.message) {
+            errorMsg += '\nDetails: ' + err.error.message;
+          } else {
+            errorMsg += '\nDetails: ' + JSON.stringify(err.error);
+          }
+        }
+        alert(errorMsg);
+        console.error('Registration error:', err);
       }
     });
   }
